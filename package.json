@@ -7,7 +7,7 @@
     "build": "ng build",
     "build:ci": "ng build --prod=true --progress=false",
     "test": "ng test",
-    "test:ci": "ng test --browsers=ChromeHeadless --code-coverage --prod=true --progress=false --sourceMap=false --watch=false",
+    "test:ci": "ng test --browsers=ChromeHeadless --codeCoverage=true --progress=false --sourceMap=false --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e:ci": "ng e2e --prod=true"
