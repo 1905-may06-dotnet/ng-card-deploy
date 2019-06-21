@@ -16,11 +16,11 @@ steps:
 - script: npm run lint
   displayName: Angular lint
 
-- script: npm run test:ci
-  displayName: Angular test
+# - script: npm run test:ci
+#   displayName: Angular test
 
-- script: npm run e2e
-  displayName: Angular end-to-end test
+# - script: npm run e2e
+#   displayName: Angular end-to-end test
 
 - task: SonarCloudPrepare@1
   displayName: Prepare SonarCloud analysis
