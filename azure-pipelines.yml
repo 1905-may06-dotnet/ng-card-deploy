@@ -1,10 +1,51 @@
 trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-    - 06-TSandAngular/angular-cards
+- master
 
 steps:
-- script: echo build
+- task: UseNode@1
+  displayName: Ensure Node installed
+  inputs:
+    version: '10.x'
+
+- script: npm ci
+  displayName: Install NPM deps
+
+- script: npm run build:ci
+  displayName: Angular build production
+
+- script: npm run lint
+  displayName: Angular lint
+
+- script: npm run test:ci
+  displayName: Angular test
+
+- script: npm run e2e
+  displayName: Angular end-to-end test
+
+- task: SonarCloudPrepare@1
+  displayName: Prepare SonarCloud analysis
+  inputs:
+    SonarCloud: 'sonarcloud-escalonn'
+    organization: 'escalonn-github'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'ng-kaur-demo'
+    cliSources: 'src'
+    extraProperties: |
+      sonar.typescript.lcov.reportPaths=coverage/angular-cards/lcov.info
+
+- task: SonarCloudAnalyze@1
+  displayName: Run SonarCloud analysis
+
+- task: SonarCloudPublish@1
+  displayName: Publish SonarCloud quality gate result
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(0518cd5b-d389-4983-9496-cdcae31dcc60)'
+    appType: 'webApp'
+    WebAppName: '1905-ng-kaur-demo'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/dist/angular-cards'
