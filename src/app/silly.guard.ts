@@ -9,7 +9,7 @@ export class SillyGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let currentTime = new Date();
+    const currentTime = new Date();
     // if seconds are even, allow him in
     return currentTime.getSeconds() % 2 === 0;
   }

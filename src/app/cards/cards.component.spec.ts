@@ -6,7 +6,7 @@ import { CardsApiService } from '../cards-api.service';
 describe('CardsComponent', () => {
   let component: CardsComponent;
   let fixture: ComponentFixture<CardsComponent>;
-  let spyService = jasmine.createSpyObj('CardsApiService', ['createDeck', 'drawDeck', 'shuffleDeck',]);
+  const spyService = jasmine.createSpyObj('CardsApiService', ['createDeck', 'drawDeck', 'shuffleDeck', ]);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

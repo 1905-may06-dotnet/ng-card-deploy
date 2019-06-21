@@ -18,8 +18,7 @@ export class CardsComponent implements OnInit {
   newDeck(
     drawCardButton: HTMLButtonElement,
     shuffleButton: HTMLButtonElement,
-    cardContainer: HTMLDivElement)
-  {
+    cardContainer: HTMLDivElement) {
     this.cardService.createDeck().then(res => this.deckId = res.deck_id);
     drawCardButton.disabled = false;
     shuffleButton.disabled = false;
@@ -27,10 +26,9 @@ export class CardsComponent implements OnInit {
     // should catch and show good error message
   }
 
-  drawCard(cardContainer: HTMLDivElement)
-  {
+  drawCard(cardContainer: HTMLDivElement) {
     this.cardService.drawDeck(this.deckId, 1).then(res => {
-      let img = document.createElement('img');
+      const img = document.createElement('img');
       img.src = res.cards[0].image;
       cardContainer.appendChild(img);
     });

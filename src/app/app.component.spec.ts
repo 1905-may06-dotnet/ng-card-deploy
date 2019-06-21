@@ -4,6 +4,12 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { Component, Input } from '@angular/core';
 
+@Component({ selector: 'app-cards', template: '' })
+class StubCardsComponent {
+  @Input()
+  textFromInput: string;
+}
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
 
@@ -14,7 +20,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        CardsComponentStub
+        StubCardsComponent
       ],
     }).compileComponents();
   }));
@@ -38,9 +44,3 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-cards!');
   });
 });
-
-@Component({selector: 'app-cards', template: ''})
-class CardsComponentStub {
-  @Input()
-  textFromInput: string;
-}
