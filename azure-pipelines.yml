@@ -19,7 +19,7 @@ steps:
 - script: npm run test:ci
   displayName: Angular test
 
-- script: npm run e2e
+- script: npm run e2e:ci
   displayName: Angular end-to-end test
 
 - task: SonarCloudPrepare@1
