@@ -30,7 +30,6 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'ng-kaur-demo'
-    cliSources: 'src'
     extraProperties: |
       sonar.typescript.lcov.reportPaths=coverage/angular-cards/lcov.info
 
