@@ -43,6 +43,7 @@ steps:
     pollingTimeoutSec: '300'
 
 - task: AzureRmWebAppDeployment@4
+  displayName: Deploy to Azure App Service
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Pay-As-You-Go(0518cd5b-d389-4983-9496-cdcae31dcc60)'
